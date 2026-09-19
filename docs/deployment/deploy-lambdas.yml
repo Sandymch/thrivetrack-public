@@ -1,0 +1,101 @@
+name: Deploy Lambda Functions
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "backend/functions/**"
+      - "backend/common/**"
+      - ".github/workflows/deploy-lambdas.yml"
+
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Deploy Lambda functions
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        lambda:
+          - function_name: thrivetrack-register-user
+            source_path: backend/functions/register_user/lambda_function.py
+            zip_name: register_user.zip
+
+          - function_name: thrivetrack-create-workload-record
+            source_path: backend/functions/create_workload_record/lambda_function.py
+            zip_name: create_workload_record.zip
+
+          - function_name: thrivetrack-get-workload-record
+            source_path: backend/functions/get_workload_records/lambda_function.py
+            zip_name: get_workload_records.zip
+
+          - function_name: thrivetrack-get-workload-categories
+            source_path: backend/functions/get_workload_categories/lambda_function.py
+            zip_name: get_workload_categories.zip
+
+          - function_name: thrivetrack-get-workload-summary
+            source_path: backend/functions/get_workload_summary/lambda_function.py
+            zip_name: get_workload_summary.zip
+
+          - function_name: thrivetrack-create-dass21-assessment
+            source_path: backend/functions/create_dass21_assessment/lambda_function.py
+            zip_name: create_dass21_assessment.zip
+
+          - function_name: thrivetrack-get-dass21-assessments
+            source_path: backend/functions/get_dass21_assessments/lambda_function.py
+            zip_name: get_dass21_assessments.zip
+
+          - function_name: thrivetrack-get-dass21-summary
+            source_path: backend/functions/get_dass21_summary/lambda_function.py
+            zip_name: get_dass21_summary.zip
+
+          - function_name: thrivetrack-delete-account-data
+            source_path: backend/functions/delete_account_data/lambda_function.py
+            zip_name: delete_account_data.zip
+
+          - function_name: thrivetrack-get-notification-settings
+            source_path: backend/functions/get_notification_settings/lambda_function.py
+            zip_name: get_notification_settings.zip
+
+          - function_name: thrivetrack-update-notification-settings
+            source_path: backend/functions/update_notification_settings/lambda_function.py
+            zip_name: update_notification_settings.zip
+
+          - function_name: thrivetrack-send-wellbeing-reminders
+            source_path: backend/functions/send_wellbeing_reminders/lambda_function.py
+            zip_name: send_wellbeing_reminders.zip
+
+          - function_name: thrivetrack-send-email-notification
+            source_path: backend/functions/send_email_notification/lambda_function.py
+            zip_name: send_email_notification.zip
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Package Lambda
+        run: |
+          rm -rf package
+          mkdir -p package/common
+
+          cp "${{ matrix.lambda.source_path }}" package/lambda_function.py
+          cp backend/common/*.py package/common/
+
+          cd package
+          zip -r "../${{ matrix.lambda.zip_name }}" .
+
+      - name: Deploy Lambda
+        run: |
+          aws lambda update-function-code \
+            --function-name "${{ matrix.lambda.function_name }}" \
+            --zip-file "fileb://${{ matrix.lambda.zip_name }}"

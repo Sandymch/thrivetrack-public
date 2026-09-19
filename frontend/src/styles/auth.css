@@ -1,0 +1,356 @@
+/* Welcome page */
+
+.welcome-page {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(min(100%, 420px), 0.85fr);
+  width: 100%;
+  min-width: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.welcome-introduction {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 0;
+  min-height: 100vh;
+  padding: 40px clamp(28px, 6vw, 88px);
+  background:
+    radial-gradient(
+      circle at 10% 15%,
+      rgba(182, 210, 237, 0.72),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 80% 90%,
+      rgba(252, 211, 175, 0.45),
+      transparent 34%
+    ),
+    var(--color-background);
+}
+
+.welcome-brand {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  min-width: 0;
+  font-size: 1.2rem;
+  font-weight: 750;
+}
+
+.brand-mark {
+  display: grid;
+  flex: 0 0 auto;
+  width: 42px;
+  height: 42px;
+  color: #ffffff;
+  background: var(--color-mauve);
+  border-radius: 12px;
+  place-items: center;
+}
+
+.welcome-copy {
+  width: min(700px, 100%);
+  min-width: 0;
+  padding: 60px 0;
+}
+
+.welcome-eyebrow,
+.action-label {
+  display: inline-flex;
+  max-width: 100%;
+  padding: 8px 14px;
+  color: #705465;
+  font-size: 1rem;
+  font-weight: 700;
+  background: var(--color-pink);
+  border-radius: 999px;
+}
+
+.welcome-copy h1 {
+  max-width: 100%;
+  margin: 24px 0;
+  font-size: clamp(3rem, 5vw, 5.6rem);
+  line-height: 1;
+  letter-spacing: -0.055em;
+  overflow-wrap: anywhere;
+}
+
+.welcome-copy > p {
+  max-width: 620px;
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 1.125rem;
+}
+
+.welcome-features {
+  display: grid;
+  gap: 14px;
+  width: min(620px, 100%);
+  min-width: 0;
+  margin-top: 36px;
+}
+
+.welcome-feature {
+  display: flex;
+  gap: 16px;
+  min-width: 0;
+  padding: 16px 18px;
+  background: rgba(255, 255, 255, 0.62);
+  border: 1px solid rgba(179, 136, 158, 0.18);
+  border-radius: 16px;
+}
+
+.welcome-feature > div:last-child {
+  min-width: 0;
+}
+
+.feature-number {
+  flex: 0 0 auto;
+  color: var(--color-red);
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+.welcome-feature strong {
+  display: block;
+  font-size: 1.05rem;
+  overflow-wrap: anywhere;
+}
+
+.welcome-feature p {
+  margin: 4px 0 0;
+  color: var(--color-text-muted);
+  font-size: 1rem;
+  overflow-wrap: anywhere;
+}
+
+.welcome-footer {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 1rem;
+}
+
+
+/* Right panel */
+
+.welcome-action-panel {
+  display: grid;
+  min-width: 0;
+  min-height: 100vh;
+  padding: 32px;
+  background:
+    radial-gradient(
+      circle at 75% 18%,
+      rgba(255, 255, 255, 0.24),
+      transparent 30%
+    ),
+    linear-gradient(
+      145deg,
+      #b3889e 0%,
+      #aaa7cf 55%,
+      #b6d2ed 100%
+    );
+  place-items: center;
+}
+
+.welcome-action-card {
+  width: min(480px, 100%);
+  min-width: 0;
+  padding: clamp(30px, 4vw, 52px);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 28px;
+  box-shadow: 0 28px 70px rgba(68, 49, 63, 0.22);
+  backdrop-filter: blur(20px);
+}
+
+.welcome-action-card h2 {
+  margin: 20px 0 10px;
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  line-height: 1.1;
+  overflow-wrap: anywhere;
+}
+
+.action-description {
+  margin: 0 0 28px;
+  color: var(--color-text-muted);
+  font-size: 1rem;
+}
+
+
+/* Auth form */
+
+.registration-login-form {
+  display: grid;
+  gap: 20px;
+  width: 100%;
+  min-width: 0;
+}
+
+.form-field {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+}
+
+.form-field label {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.form-field input {
+  width: 100%;
+  max-width: 100%;
+  min-height: 52px;
+  padding: 12px 15px;
+  color: var(--color-text);
+  font-size: 1rem;
+  background: var(--color-surface);
+  border: 1px solid rgba(45, 40, 48, 0.22);
+  border-radius: 12px;
+  outline: none;
+}
+
+.form-field input:focus {
+  border-color: var(--color-mauve);
+  box-shadow: 0 0 0 4px rgba(179, 136, 158, 0.18);
+}
+
+.password-requirements {
+  min-width: 0;
+  padding: 16px 18px;
+  color: var(--color-text);
+  font-size: 1rem;
+  background: rgba(182, 210, 237, 0.3);
+  border: 1px solid rgba(179, 136, 158, 0.2);
+  border-radius: 14px;
+}
+
+.password-requirements p {
+  margin: 0 0 8px;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.password-requirements ul {
+  padding-left: 22px;
+  margin: 0;
+}
+
+.password-requirements li {
+  margin: 5px 0;
+  font-size: 1rem;
+}
+
+.privacy-note {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  min-width: 0;
+  color: var(--color-text-muted);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.privacy-note span {
+  display: grid;
+  flex: 0 0 auto;
+  width: 23px;
+  height: 23px;
+  color: #ffffff;
+  background: var(--color-mauve);
+  border-radius: 50%;
+  place-items: center;
+}
+
+.privacy-note p {
+  min-width: 0;
+  margin: 1px 0 0;
+}
+
+.auth-text-button {
+  justify-self: start;
+  padding: 0;
+  color: var(--color-mauve);
+  font: inherit;
+  font-weight: 800;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.auth-text-button:hover {
+  text-decoration: underline;
+}
+
+
+/* Responsive */
+
+@media (max-width: 900px) {
+  .welcome-page {
+    grid-template-columns: 1fr;
+  }
+
+  .welcome-introduction,
+  .welcome-action-panel {
+    min-height: auto;
+  }
+
+  .welcome-introduction {
+    padding: 30px 24px 60px;
+  }
+
+  .welcome-copy {
+    padding: 70px 0 40px;
+  }
+
+  .welcome-action-panel {
+    padding: 64px 24px;
+  }
+}
+
+@media (max-width: 520px) {
+  .welcome-introduction {
+    padding: 26px 18px 50px;
+  }
+
+  .welcome-copy {
+    padding: 56px 0 34px;
+  }
+
+  .welcome-copy h1 {
+    font-size: 2.7rem;
+    letter-spacing: -0.045em;
+  }
+
+  .welcome-feature {
+    gap: 12px;
+    padding: 14px 15px;
+  }
+
+  .welcome-action-panel {
+    padding: 44px 16px;
+  }
+
+  .welcome-action-card {
+    padding: 28px 22px;
+    border-radius: 22px;
+  }
+}
+
+@media (max-width: 380px) {
+  .welcome-copy h1 {
+    font-size: 2.35rem;
+  }
+
+  .welcome-eyebrow,
+  .action-label {
+    border-radius: 18px;
+  }
+
+  .welcome-feature {
+    flex-direction: column;
+  }
+}
