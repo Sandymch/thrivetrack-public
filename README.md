@@ -44,19 +44,21 @@ The project uses a serverless AWS architecture:
 
 ## Main Features
 
-- User registration and authentication with AWS Cognito.
-- JWT-protected API access through API Gateway.
-- Workload record creation using NASA-TLX inspired dimensions.
-- Task category tracking.
-- Workload trend and category dashboards.
-- Weekly DASS-21 wellbeing check-ins.
-- Depression, anxiety, and stress subscale scoring.
-- 7-day interval enforcement between wellbeing submissions.
-- Recent workload and wellbeing record views.
-- Account information and permanent account deletion.
-- Frontend deployment through S3 and CloudFront.
-- Backend Lambda deployment through GitHub Actions.
-- Implemented and tested scheduled wellbeing reminder workflow using EventBridge, Lambda, RDS, and SES.
+- **Workload recording:** Users can log tasks with category, time range, and NASA-TLX inspired workload ratings, helping them reflect on which tasks feel most demanding.
+
+- **Workload dashboard:** Users can view workload trends, category distribution, and recent records, making it easier to identify workload patterns over time.
+
+- **Weekly wellbeing check-ins:** Users can complete DASS-21 based check-ins for depression, anxiety, and stress subscales. The feature is for self-reflection only and does not provide diagnosis or medical advice.
+
+- **Wellbeing dashboard:** Users can review their latest wellbeing scores and observe changes across previous check-ins, supporting longitudinal self-awareness.
+
+- **Secure personal access:** Cognito authentication and JWT-protected APIs ensure records are linked to the authenticated user.
+
+- **Account data control:** Users can permanently delete their account and application data, supporting privacy-aware data management.
+
+- **Cloud deployment workflow:** The project demonstrates a full-stack AWS deployment using S3, CloudFront, API Gateway, Lambda, RDS PostgreSQL, Cognito, and GitHub Actions workflow examples.
+
+- **Reminder workflow prototype:** A scheduled wellbeing reminder workflow was implemented and tested with EventBridge, Lambda, RDS, and SES, demonstrating how reminder-based engagement could be added in production.
 
 ## Prerequisites
 
