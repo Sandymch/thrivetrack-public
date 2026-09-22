@@ -14,7 +14,36 @@ The project uses a serverless AWS architecture:
 - GitHub Actions automates frontend deployment and Lambda code deployment.
 - Amazon EventBridge and Amazon SES were used to implement and test a scheduled wellbeing reminder workflow.
 
-## Project Directory
+## Main Features
+
+- **Record daily workload**  
+  Users can log tasks with a task name, category, start time, end time, and workload ratings. This helps users keep a structured record of what they worked on and how demanding each task felt.
+
+- **Reflect on workload intensity**  
+  Users can rate workload across dimensions such as mental demand, physical demand, time pressure, performance, effort, and frustration. This helps users understand which aspects of a task contributed to their workload.
+
+- **Review recent tasks**  
+  Users can view recent workload records in a dashboard, making it easier to look back at completed tasks and compare workload scores.
+
+- **Identify workload patterns by category**  
+  Users can group tasks by category and view how workload is distributed across different areas such as study, project work, meetings, or other personal categories.
+
+- **Track workload trends over time**  
+  Users can view workload trends across different time periods to observe whether their perceived workload is increasing, decreasing, or staying stable.
+
+- **Complete weekly wellbeing check-ins**  
+  Users can complete a weekly DASS-21 based check-in for depression, anxiety, and stress subscales. This feature is designed for personal self-reflection only and does not provide diagnosis or medical advice.
+
+- **Review wellbeing changes over time**  
+  Users can view their latest wellbeing scores and previous check-in trends, helping them notice changes in their own wellbeing patterns.
+
+- **Avoid repeated short-interval check-ins**  
+  Users are guided to complete wellbeing check-ins at weekly intervals, supporting more consistent reflection over time.
+
+- **Manage personal account data**  
+  Users can view account information and permanently delete their account data when they no longer want to keep their records in the application.
+
+  ## Project Directory
 
 ```text
 .
@@ -41,25 +70,7 @@ The project uses a serverless AWS architecture:
 |-- package-lock.json
 `-- README.md             Top-level project overview and setup guide.
 ```
-
-## Main Features
-
-- **Workload recording:** Users can log tasks with category, time range, and NASA-TLX inspired workload ratings, helping them reflect on which tasks feel most demanding.
-
-- **Workload dashboard:** Users can view workload trends, category distribution, and recent records, making it easier to identify workload patterns over time.
-
-- **Weekly wellbeing check-ins:** Users can complete DASS-21 based check-ins for depression, anxiety, and stress subscales. The feature is for self-reflection only and does not provide diagnosis or medical advice.
-
-- **Wellbeing dashboard:** Users can review their latest wellbeing scores and observe changes across previous check-ins, supporting longitudinal self-awareness.
-
-- **Secure personal access:** Cognito authentication and JWT-protected APIs ensure records are linked to the authenticated user.
-
-- **Account data control:** Users can permanently delete their account and application data, supporting privacy-aware data management.
-
-- **Cloud deployment workflow:** The project demonstrates a full-stack AWS deployment using S3, CloudFront, API Gateway, Lambda, RDS PostgreSQL, Cognito, and GitHub Actions workflow examples.
-
-- **Reminder workflow prototype:** A scheduled wellbeing reminder workflow was implemented and tested with EventBridge, Lambda, RDS, and SES, demonstrating how reminder-based engagement could be added in production.
-
+  
 ## Prerequisites
 
 Install the following tools before running or deploying the project:
